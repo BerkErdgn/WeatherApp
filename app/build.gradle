@@ -1,16 +1,19 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-android'
 }
 
 android {
     namespace 'com.berke.weatherapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.berke.weatherapp"
-        minSdk 23
-        targetSdk 32
+        minSdk 21
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -31,14 +34,38 @@ android {
         jvmTarget = '1.8'
     }
 }
+def retrofitVersion = '2.3.0'
+def rxJavaVersion = '2.1.1'
+def kotlin_version = '1.7.20'
+def nav_version = "2.5.3"
+def accompanissr_version = "0.28.0"
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    //System UI Controller - Accompanist
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanissr_version"
+
 }
